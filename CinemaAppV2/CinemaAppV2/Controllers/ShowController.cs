@@ -29,6 +29,7 @@ namespace CinemaAppV2.Controllers
                         join m in _databaseContext.Movie on s.movieId equals m.movieId
                         select new ShowMovieTheaterOutput
                         {
+                            showId = s.showId,
                             showTime = s.showtime,
                             moiveTitle = m.title,
                             theaterName = t.name
@@ -47,6 +48,7 @@ namespace CinemaAppV2.Controllers
                         where s.movieId == id
                         select new ShowMovieTheaterOutput
                         {
+                            showId = s.showId,
                             showTime = s.showtime,
                             moiveTitle = m.title,
                             theaterName = t.name
@@ -64,6 +66,7 @@ namespace CinemaAppV2.Controllers
                         where s.showId == id
                         select new ShowMovieTheaterOutput
                         {
+                            showId = s.showId,
                             showTime = s.showtime,
                             moiveTitle = m.title,
                             theaterName = t.name

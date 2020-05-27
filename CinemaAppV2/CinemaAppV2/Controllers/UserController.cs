@@ -24,7 +24,7 @@ namespace CinemaAppV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            var userList = await _databaseContext.User.Include(user => user.roleId).ToListAsync();
+            var userList = await _databaseContext.User.ToListAsync();
 
             return Ok(userList);
         }
