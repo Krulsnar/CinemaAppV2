@@ -19,7 +19,7 @@ namespace CinemaAppV2.Controllers
         {
             _databaseContext = databaseContext;
         }
-
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Theater>>> GetTheater()
         {
