@@ -28,6 +28,14 @@ namespace CinemaAppV2.Controllers
             return await _context.Movie.ToListAsync();
         }
 
+        // GET: api/Movie/title='name'
+        [HttpGet("search")]
+        public Movie Search(string title)
+        {
+            var movie = _context.Movie.Where(m => m.title == title).FirstOrDefault();
+            return movie;
+        }
+
         // GET: api/Movie/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(int id)

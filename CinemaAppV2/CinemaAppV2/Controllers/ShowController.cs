@@ -37,6 +37,24 @@ namespace CinemaAppV2.Controllers
             return Ok(show);
         }
 
+        //Get all show from one movie
+        [HttpGet("movie/{id}")]
+        public ActionResult<ShowMovieTheaterOutput> GetShowByMovie(int id)
+        {
+            var show = (from s in _databaseContext.Show
+                        join t in _databaseContext.Theater on s.theaterId equals t.theaterId
+                        join m in _databaseContext.Movie on s.movieId equals m.movieId
+                        where s.movieId == id
+                        select new ShowMovieTheaterOutput
+                        {
+                            showTime = s.showtime,
+                            moiveTitle = m.title,
+                            theaterName = t.name
+                        }).ToList();
+
+            return Ok(show);
+        }
+
         [HttpGet("{id}")]
         public ActionResult<ShowMovieTheaterOutput> GetShow(int id)
         {
