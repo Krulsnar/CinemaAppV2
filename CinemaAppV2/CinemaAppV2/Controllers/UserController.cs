@@ -41,6 +41,13 @@ namespace CinemaAppV2.Controllers
             return user;
         }
 
+        [HttpGet("search")]
+        public User Search(string username, string password)
+        {
+            var user = _databaseContext.User.Where(u => u.username == username && u.password == password).FirstOrDefault();
+            return user;
+        }
+
         [HttpGet("WithRole/{id}")]
         public ActionResult<UserRoleOutput> GetUserWithRole(int id)
         {
